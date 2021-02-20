@@ -2,8 +2,9 @@
 name: build aseprite
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
+#   schedule:
+#     - cron: '0 0 * * *' # Runs every night
+  workflow_dispatch:
   push:
     branches:
       - master
