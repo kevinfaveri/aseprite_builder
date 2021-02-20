@@ -2,14 +2,15 @@
 name: build aseprite
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
   push:
     branches:
       - master
 
 env:
   BUILD_TYPE: Release
-  
+
 jobs:
   check-version:
     name: Check latest Aseprite release
@@ -55,7 +56,7 @@ jobs:
           ${{ steps.version_info.outputs.version_info }}
         draft: true
         prerelease: false
-  
+
   build-aseprite:
     name: Build Aseprite
     needs: check-version
